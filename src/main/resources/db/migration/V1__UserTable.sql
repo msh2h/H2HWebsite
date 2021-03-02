@@ -1,0 +1,5 @@
+CREATE TABLE h2h_user (
+    userId UUID NOT NULL PRIMARY KEY,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL
+);
