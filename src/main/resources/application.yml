@@ -1,9 +1,19 @@
+#initial set up for postgres using docker
 #docker run --name h2h-postgres -e POSTGRES_PASSWORD=password -d -p 5432:5432 postgres:alpine
 #docker ps
 #docker port h2h-postgres
 #docker exec -it b49c60628f18 bin/bash
 #psql -U postgres
 #CREATE DATABASE h2hdb;
+#\c h2hdb
+#\q
+#exit
+
+#start existing postgres on docker
+#docker ps -a
+#docker start b49c60628f18
+#docker exec -it b49c60628f18 bin/bash
+#psql -U postgres
 #\c h2hdb
 #\q
 #exit

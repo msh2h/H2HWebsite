@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.Dao.UserDao;
 import com.example.demo.Dao.UserProfileDao;
 import com.example.demo.model.CommentOnUser;
 import com.example.demo.model.User;
@@ -19,10 +20,12 @@ import java.util.UUID;
 public class UserProfileService {
 
     private final UserProfileDao userProfileDao;
+    private final UserDao userDao;
 
     @Autowired
-    public UserProfileService(@Qualifier("postgresUserProfile") UserProfileDao userProfileDao) {
+    public UserProfileService(@Qualifier("postgresUserProfile") UserProfileDao userProfileDao, @Qualifier("postgresUser") UserDao userDao) {
         this.userProfileDao = userProfileDao;
+        this.userDao = userDao;
     }
 
     public int saveUserProfile(UserProfile userProfile){
@@ -35,9 +38,13 @@ public class UserProfileService {
 
     public UserProfile getUserProfile(UUID userId){
         UserProfile userProfile = userProfileDao.getUserProfile(userId);
+        User user = userDao.findByUserId(userId);
         if(userProfile!=null){
             userProfile.setComments(userProfileDao.getCommentsForUser(userId));
             userProfile.setVolunteerRoles(userProfileDao.getVolunteerRolesForUser(userId));
+            if(user!=null){
+                userProfile.setEmail(user.getEmail());
+            }
         }
         return userProfile;
     }

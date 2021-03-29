@@ -1,5 +1,7 @@
 -- start postgresql, and recreated database before starting spring boot project
-
+-- docker ps -a
+-- docker start 88888
+-- docker exec -it b49c60628f18 bin/bash
 psql -U postgres
 DROP DATABASE h2hdb;
 CREATE DATABASE h2hdb;
@@ -7,12 +9,12 @@ CREATE DATABASE h2hdb;
 
 -- start spring boot project, then tables will be recreated. then insert below test data
 
-insert into h2h_user ('96766bc7-ad13-46fb-a119-f046bfd3ebe8', 'user1@ms.com', 'password1');
-insert into h2h_user ('81336373-61e9-46a4-9bbb-630c82352eb8', 'user2@ms.com', 'password2');
-insert into h2h_user ('7e7ae8aa-d05e-4d7d-9a73-cb2981473f3c', 'user3@ms.com', 'password3');
-insert into h2h_user ('a1bc1553-212e-4912-9ee4-0714d6205974', 'user4@ms.com', 'password4');
-insert into h2h_user ('aac834bf-9405-4eb0-8476-0913f5e29b59', 'user5@ms.com', 'password5');
-insert into h2h_user ('8288091c-0053-4923-bfb0-26635e78ba58', 'user6@ms.com', 'password6');
+insert into h2h_user values ('96766bc7-ad13-46fb-a119-f046bfd3ebe8', 'user1@ms.com', 'password1');
+insert into h2h_user values ('81336373-61e9-46a4-9bbb-630c82352eb8', 'user2@ms.com', 'password2');
+insert into h2h_user values ('7e7ae8aa-d05e-4d7d-9a73-cb2981473f3c', 'user3@ms.com', 'password3');
+insert into h2h_user values ('a1bc1553-212e-4912-9ee4-0714d6205974', 'user4@ms.com', 'password4');
+insert into h2h_user values ('aac834bf-9405-4eb0-8476-0913f5e29b59', 'user5@ms.com', 'password5');
+insert into h2h_user values ('8288091c-0053-4923-bfb0-26635e78ba58', 'user6@ms.com', 'password6');
 
 
 select * from h2h_user;

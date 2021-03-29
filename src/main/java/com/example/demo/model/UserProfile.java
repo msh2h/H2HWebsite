@@ -19,6 +19,7 @@ public class UserProfile {
     private String passportId;
     private String passportName;
     private String passportNationality;
+    private String email;
     private String mobilePhone;
     private String homePhone;
     //no need of workphone
@@ -56,6 +57,7 @@ public class UserProfile {
                        @JsonProperty("passportId") String passportId,
                        @JsonProperty("passportName") String passportName,
                        @JsonProperty("passportNationality") String passportNationality,
+                       @JsonProperty("email") String email,
                        @JsonProperty("mobilePhone") String mobilePhone,
                        @JsonProperty("homePhone") String homePhone,
                        @JsonProperty("workPhone") String workPhone,
@@ -82,6 +84,7 @@ public class UserProfile {
         this.passportId = passportId;
         this.passportName = passportName;
         this.passportNationality = passportNationality;
+        this.email = email;
         this.mobilePhone = mobilePhone;
         this.homePhone = homePhone;
         this.workPhone = workPhone;
@@ -152,6 +155,14 @@ public class UserProfile {
 
     public void setPassportNationality(String passportNationality) {
         this.passportNationality = passportNationality;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getMobilePhone() {

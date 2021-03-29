@@ -61,7 +61,7 @@ public class PostgresUserProfileDao implements UserProfileDao {
             boolean speakChinese = resultSet.getBoolean("speakChinese");
 
             return new UserProfile(userId, givenName, familyName, passportId, passportName, passportNationality,
-                    mobilePhone, homePhone, workPhone, address, country, state, zipcode, lastLogin, loginCount,
+                    null, mobilePhone, homePhone, workPhone, address, country, state, zipcode, lastLogin, loginCount,
                     effectiveFromDate, effectiveToDate, isActive, isAdmin, knowUsFrom, liveInShanghai, isStudent,
                     birth, school, hasSchoolAccrediation, speakChinese);
         });
@@ -110,6 +110,7 @@ public class PostgresUserProfileDao implements UserProfileDao {
                         rs.getString("passportId"),
                         rs.getString("passportName"),
                         rs.getString("passportNationality"),
+                        null,
                         rs.getString("mobilePhone"),
                         rs.getString("homePhone"),
                         rs.getString("workPhone"),

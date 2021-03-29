@@ -21,6 +21,26 @@ public class PostgresUserDao implements UserDao{
     }
 
     @Override
+    public User findByUserId(UUID userId){
+        final String sql = "select * from h2h_user where userid = ?";
+
+        User user = null;
+
+        try{
+            user = jdbcTemplate.queryForObject(sql, new Object[]{userId}, (rs, rowNum) ->
+                    new User(
+                            UUID.fromString(rs.getString("userId")),
+                            rs.getString("email"),
+                            rs.getString("password")
+                    ));
+        } catch (EmptyResultDataAccessException e){
+            //todo: log
+            System.out.println("no users found");
+        }
+        return user;
+    }
+
+    @Override
     public User findByEmail(String email){
         final String sql = "select * from h2h_user where email = ?";
 
@@ -55,7 +75,9 @@ public class PostgresUserDao implements UserDao{
                     ));
         } catch (EmptyResultDataAccessException e){
             //todo: log
-            System.out.println("no users found");
+            System.out.println("=======no users found=======");
+            System.out.println("=======email: "+email+"=======");
+            System.out.println("=======password: "+password+"=======");
         }
         return user;
     }
